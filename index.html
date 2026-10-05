@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta name="theme-color" content="#020502">
+  <meta name="description" content="Muhammad Jameer — Hacker King | Social Links">
+
+  <title>𝐌𝐔𝐇𝐀𝐌𝐌𝐀𝐃 𝐉𝐀𝐌𝐄𝐄𝐑 | 𝐇𝐀𝐂𝐊𝐄𝐑 𝐊𝐈𝐍𝐆</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 50% 20%, rgba(0, 255, 80, 0.08), transparent 32%),
+        radial-gradient(circle at 50% 80%, rgba(0, 255, 80, 0.04), transparent 35%),
+        #020502;
+
+      color: #00ff66;
+      font-family: "Courier New", monospace;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+    }
+
+    /* Cyber grid background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background-image:
+        linear-gradient(rgba(0,255,80,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,80,0.035) 1px, transparent 1px);
+
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* Scanline effect */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,255,80,0.018) 4px
+      );
+
+      pointer-events: none;
+    }
+
+    .page {
+      width: min(94vw, 430px);
+      height: 100dvh;
+      max-height: 850px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: clamp(8px, 1.5vh, 13px);
+
+      position: relative;
+      z-index: 2;
+
+      padding: 12px 0;
+    }
+
+    /* Profile */
+    .profile {
+      width: clamp(92px, 21vw, 125px);
+      height: clamp(92px, 21vw, 125px);
+
+      border-radius: 50%;
+
+      padding: 4px;
+
+      border: 2px solid #00ff66;
+
+      box-shadow:
+        0 0 8px #00ff66,
+        0 0 25px rgba(0,255,102,0.45),
+        inset 0 0 15px rgba(0,255,102,0.3);
+
+      background: #020502;
+
+      position: relative;
+    }
+
+    .profile::before,
+    .profile::after {
+      content: "";
+      position: absolute;
+
+      inset: -7px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(0,255,102,0.28);
+    }
+
+    .profile::after {
+      inset: -12px;
+      border-color: rgba(0,255,102,0.10);
+    }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      display: block;
+    }
+
+    /* Name */
+    .name {
+      text-align: center;
+
+      font-size: clamp(17px, 4.8vw, 25px);
+      font-weight: 900;
+
+      letter-spacing: 2px;
+
+      color: #00ff66;
+
+      text-shadow:
+        0 0 5px #00ff66,
+        0 0 15px rgba(0,255,102,0.55);
+    }
+
+    .tag {
+      margin-top: -5px;
+
+      font-size: clamp(9px, 2.4vw, 12px);
+
+      letter-spacing: 4px;
+
+      color: rgba(0,255,102,0.65);
+
+      font-weight: bold;
+    }
+
+    /* Time box */
+    .time-box {
+      width: min(88vw, 360px);
+
+      position: relative;
+
+      padding: 11px 18px;
+
+      border: 1px solid #00ff66;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0,255,102,0.07),
+          rgba(0,0,0,0.65)
+        );
+
+      box-shadow:
+        0 0 8px rgba(0,255,102,0.35),
+        inset 0 0 18px rgba(0,255,102,0.06);
+
+      text-align: center;
+
+      clip-path: polygon(
+        10px 0,
+        calc(100% - 10px) 0,
+        100% 10px,
+        100% calc(100% - 10px),
+        calc(100% - 10px) 100%,
+        10px 100%,
+        0 calc(100% - 10px),
+        0 10px
+      );
+    }
+
+    .time-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(0,255,102,0.65);
+      margin-bottom: 3px;
+    }
+
+    #time {
+      font-size: clamp(22px, 7vw, 32px);
+      font-weight: 900;
+
+      letter-spacing: 2px;
+
+      color: #00ff66;
+
+      text-shadow:
+        0 0 7px #00ff66,
+        0 0 18px rgba(0,255,102,0.55);
+    }
+
+    #date {
+      margin-top: 2px;
+
+      font-size: 9px;
+
+      letter-spacing: 2px;
+
+      color: rgba(0,255,102,0.55);
+    }
+
+    /* Buttons */
+    .buttons {
+      width: min(88vw, 360px);
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+    .cyber-btn {
+      width: 100%;
+      min-height: 43px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-decoration: none;
+
+      color: #00ff66;
+
+      font-size: clamp(12px, 3.3vw, 15px);
+      font-weight: 900;
+
+      letter-spacing: 1.5px;
+
+      border: 1px solid #00ff66;
+
+      background: rgba(0,255,102,0.035);
+
+      box-shadow:
+        0 0 5px rgba(0,255,102,0.2),
+        inset 0 0 12px rgba(0,255,102,0.025);
+
+      position: relative;
+
+      transition:
+        0.18s ease;
+
+      clip-path: polygon(
+        8px 0,
+        calc(100% - 8px) 0,
+        100% 8px,
+        100% calc(100% - 8px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        0 calc(100% - 8px),
+        0 8px
+      );
+    }
+
+    .cyber-btn:hover,
+    .cyber-btn:active {
+      background: #00ff66;
+      color: #020502;
+
+      box-shadow:
+        0 0 10px #00ff66,
+        0 0 28px rgba(0,255,102,0.5);
+
+      transform: translateY(-1px);
+    }
+
+    .cyber-btn span {
+      pointer-events: none;
+    }
+
+    /* Audio */
+    .audio-btn {
+      cursor: pointer;
+
+      font-family: inherit;
+
+      border: 1px solid #00ff66;
+
+      outline: none;
+    }
+
+    .audio-status {
+      text-align: center;
+
+      font-size: 8px;
+
+      letter-spacing: 2px;
+
+      color: rgba(0,255,102,0.55);
+
+      min-height: 10px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+
+      margin-top: 1px;
+
+      font-size: clamp(8px, 2.2vw, 10px);
+
+      letter-spacing: 1.2px;
+
+      color: rgba(0,255,102,0.55);
+
+      line-height: 1.5;
+    }
+
+    .footer strong {
+      color: #00ff66;
+
+      text-shadow:
+        0 0 5px rgba(0,255,102,0.5);
+    }
+
+    /* Tiny terminal cursor */
+    .cursor {
+      display: inline-block;
+
+      width: 6px;
+      height: 11px;
+
+      margin-left: 3px;
+
+      background: #00ff66;
+
+      vertical-align: -1px;
+
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 45% {
+        opacity: 1;
+      }
+
+      46%, 100% {
+        opacity: 0;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-height: 650px) {
+      .page {
+        gap: 6px;
+      }
+
+      .profile {
+        width: 78px;
+        height: 78px;
+      }
+
+      .name {
+        font-size: 16px;
+      }
+
+      .tag {
+        font-size: 8px;
+      }
+
+      .time-box {
+        padding: 7px 15px;
+      }
+
+      #time {
+        font-size: 21px;
+      }
+
+      .cyber-btn {
+        min-height: 36px;
+        font-size: 11px;
+      }
+
+      .buttons {
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- PROFILE IMAGE -->
+    <div class="profile">
+      <img
+        src="https://i.ibb.co/Z6fRVZmh/IMG-20261004-WA0057.png"
+        alt="Muhammad Jameer"
+        onerror="this.style.opacity='0';"
+      >
+    </div>
+
+    <!-- NAME -->
+    <div class="name">
+      𝐌𝐔𝐇𝐀𝐌𝐌𝐀𝐃 𝐉𝐀𝐌𝐄𝐄𝐑
+    </div>
+
+    <div class="tag">
+      𝐇𝐀𝐂𝐊𝐄𝐑 𝐊𝐈𝐍𝐆<span class="cursor"></span>
+    </div>
+
+    <!-- KARACHI TIME -->
+    <div class="time-box">
+      <div class="time-label">
+        𝐀𝐒𝐈𝐀 / 𝐊𝐀𝐑𝐀𝐂𝐇𝐈 • 𝐋𝐈𝐕𝐄 𝐓𝐈𝐌𝐄
+      </div>
+
+      <div id="time">
+        --:--:--
+      </div>
+
+      <div id="date">
+        CONNECTING...
+      </div>
+    </div>
+
+    <!-- SOCIAL BUTTONS -->
+    <div class="buttons">
+
+      <a
+        class="cyber-btn"
+        href="https://wa.me/923324904893?text=HI%20Hacker%20King"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐂𝐎𝐍𝐓𝐀𝐂𝐓</span>
+      </a>
+
+      <a
+        class="cyber-btn"
+        href="https://whatsapp.com/channel/0029Vb6yrzmId7nLPBWoR41S"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐂𝐇𝐀𝐍𝐍𝐄𝐋</span>
+      </a>
+
+      <a
+        class="cyber-btn"
+        href="https://www.tiktok.com/@h.king9848"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>𝐓𝐈𝐊𝐓𝐎𝐊</span>
+      </a>
+
+      <a
+        class="cyber-btn"
+        href="https://t.me/+923373780048"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌</span>
+      </a>
+
+      <!-- AUDIO -->
+      <button
+        id="audioButton"
+        class="cyber-btn audio-btn"
+        type="button"
+      >
+        <span id="audioText">▶ 𝐏𝐋𝐀𝐘 𝐀𝐔𝐃𝐈𝐎</span>
+      </button>
+
+    </div>
+
+    <div id="audioStatus" class="audio-status"></div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      𝐂𝐑𝐄𝐀𝐓𝐄𝐃 𝐁𝐘
+      <strong>𝐌𝐔𝐇𝐀𝐌𝐌𝐀𝐃 𝐉𝐀𝐌𝐄𝐄𝐑 • 𝐇𝐀𝐂𝐊𝐄𝐑 𝐊𝐈𝐍𝐆</strong>
+    </div>
+
+  </main>
+
+  <!-- AUDIO FILE MUST BE IN SAME FOLDER AS INDEX.HTML -->
+  <audio id="myAudio" preload="metadata">
+    <source src="audio.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+
+  <script>
+
+    /* =========================================
+       KARACHI TIME SYSTEM
+       API + AUTOMATIC FALLBACK
+       ========================================= */
+
+    const timeElement = document.getElementById("time");
+    const dateElement = document.getElementById("date");
+
+    let currentTime = null;
+    let lastSuccessfulApiTime = null;
+
+    const TIME_API =
+      "https://worldtime.timezone.io/api/timezone/Asia/Karachi";
+
+
+    function formatTime(date) {
+
+      return new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Karachi",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      }).format(date);
+
+    }
+
+
+    function formatDate(date) {
+
+      return new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Karachi",
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }).format(date).toUpperCase();
+
+    }
+
+
+    function showTime(date) {
+
+      timeElement.textContent = formatTime(date);
+
+      dateElement.textContent =
+        formatDate(date) + " • PKT";
+
+    }
+
+
+    /*
+      Get official Karachi time from API.
+      If API fails, the existing local clock continues.
+    */
+    async function getKarachiTime() {
+
+      try {
+
+        const controller = new AbortController();
+
+        const timeout = setTimeout(() => {
+          controller.abort();
+        }, 5000);
+
+
+        const response = await fetch(TIME_API, {
+          method: "GET",
+          cache: "no-store",
+          signal: controller.signal
+        });
+
+
+        clearTimeout(timeout);
+
+
+        if (!response.ok) {
+          throw new Error("TIME API ERROR");
+        }
+
+
+        const data = await response.json();
+
+
+        if (!data.datetime) {
+          throw new Error("INVALID TIME DATA");
+        }
+
+
+        currentTime = new Date(data.datetime);
+
+        lastSuccessfulApiTime = Date.now();
+
+
+        showTime(currentTime);
+
+
+      } catch (error) {
+
+        /*
+          IMPORTANT:
+          API failure does NOT stop the clock.
+        */
+
+        if (!currentTime) {
+
+          /*
+            First-load fallback.
+            Pakistan is UTC+05:00.
+          */
+
+          currentTime = new Date(
+            new Date().getTime() + (5 * 60 * 60 * 1000)
+          );
+
+        }
+
+        showTime(currentTime);
+      }
+
+    }
+
+
+    /*
+      Keep clock running every second.
+      Even if API goes offline, this continues.
+    */
+    setInterval(() => {
+
+      if (currentTime) {
+
+        currentTime =
+          new Date(currentTime.getTime() + 1000);
+
+        showTime(currentTime);
+
+      }
+
+    }, 1000);
+
+
+    /*
+      Refresh from API periodically.
+      The website does NOT depend on this
+      request to keep the clock running.
+    */
+    getKarachiTime();
+
+    setInterval(() => {
+
+      getKarachiTime();
+
+    }, 60000);
+
+
+
+    /* =========================================
+       AUDIO PLAYER
+       ========================================= */
+
+    const audio =
+      document.getElementById("myAudio");
+
+    const audioButton =
+      document.getElementById("audioButton");
+
+    const audioText =
+      document.getElementById("audioText");
+
+    const audioStatus =
+      document.getElementById("audioStatus");
+
+
+    audioButton.addEventListener("click", async () => {
+
+      try {
+
+        if (audio.paused) {
+
+          await audio.play();
+
+          audioText.textContent =
+            "❚❚ 𝐏𝐀𝐔𝐒𝐄 𝐀𝐔𝐃𝐈𝐎";
+
+          audioStatus.textContent =
+            "𝐀𝐔𝐃𝐈𝐎 𝐏𝐋𝐀𝐘𝐈𝐍𝐆...";
+
+        } else {
+
+          audio.pause();
+
+          audioText.textContent =
+            "▶ 𝐏𝐋𝐀𝐘 𝐀𝐔𝐃𝐈𝐎";
+
+          audioStatus.textContent =
+            "𝐀𝐔𝐃𝐈𝐎 𝐏𝐀𝐔𝐒𝐄𝐃";
+
+        }
+
+      } catch (error) {
+
+        audioStatus.textContent =
+          "𝐀𝐔𝐃𝐈𝐎 𝐅𝐈𝐋𝐄 𝐍𝐎𝐓 𝐅𝐎𝐔𝐍𝐃";
+
+      }
+
+    });
+
+
+    audio.addEventListener("ended", () => {
+
+      audioText.textContent =
+        "▶ 𝐏𝐋𝐀𝐘 𝐀𝐔𝐃𝐈𝐎";
+
+      audioStatus.textContent =
+        "𝐀𝐔𝐃𝐈𝐎 𝐅𝐈𝐍𝐈𝐒𝐇𝐄𝐃";
+
+    });
+
+
+    audio.addEventListener("error", () => {
+
+      audioStatus.textContent =
+        "𝐀𝐔𝐃𝐈𝐎 𝐅𝐈𝐋𝐄 𝐍𝐎𝐓 𝐅𝐎𝐔𝐍𝐃";
+
+    });
+
+  </script>
+
+</body>
+  </html>
